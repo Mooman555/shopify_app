@@ -1,1 +1,1 @@
-worker: shopify app serve 
+worker:node server/index.js
