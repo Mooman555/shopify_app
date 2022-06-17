@@ -1,1 +1,1 @@
-web: shopify app serve 
+worker: shopify app serve 
