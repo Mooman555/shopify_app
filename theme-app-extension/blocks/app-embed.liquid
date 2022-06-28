@@ -55,11 +55,16 @@
   }
 </style>
 
+   {{ 'image-gallery.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'valueChangeTrigger.js' | asset_url }}" defer></script>
+  <script src="{{ 'productListCollections.js' | asset_url }}" defer></script>
+  
+
+
 {% schema %}
 {
   "name": "App Embed",
   "target": "body",
-  "stylesheet": "image-gallery.css",
   "javascript": "checkoutUi.js",
   "settings": []
 }

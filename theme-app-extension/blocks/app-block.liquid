@@ -1,27 +1,33 @@
-
-  {%- if page_title == "Your Shopping Cart" -%}
-  <option>{{ cart.original_total_price| divided_by:100 }} Loyalty Points</option>
+ {%- if page_title == "Your Shopping Cart" -%}
+  <p class="text-right">{{ block.settings.heading}}</p>
+  <p class="text-right"><option class="loyalty-points">{{ cart.original_total_price| divided_by:100 }} Loyalty points</option></p>
+  {{ 'image-gallery.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'checkoutUi.js' | asset_url }}" defer></script>
+  <script src="{{ 'entryTypeCalculations.js' | asset_url }}" defer></script>
   {%- else -%}
-   <option>{{ product.price| divided_by:100 }} Loyalty Points</option>
+   <p>{{ block.settings.heading }}</p>
+   <p> <option class="loyalty-points">{{ product.price| divided_by:100 }} Loyalty points per unit</option></p>
+   {{ 'image-gallery.css' | asset_url | stylesheet_tag }}
+   <script src="{{ 'checkoutUi.js' | asset_url }}" defer></script>
   {%- endif -%}
 
-{% javascript %}
-  class CartNote extends HTMLElement {
-    constructor() {
-      super();
+  <script src="{{ 'productListCollections.js' | asset_url }}" defer></script>
 
-      this.addEventListener('change', debounce((event) => {
-        const body = JSON.stringify({ note: event.target.value });
-        fetch(`${routes.cart_update_url}`, {...fetchConfig(), ...{ body }});
-      }, 300))
-    }
+
+{% schema %}
+  {
+    "name": "Loyalty Point Block",
+    "target": "section",
+    "javascript": "image-gallery.js",
+    "templates": ["index","product", "cart","collection"],
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Add Label",
+        "default": "Loyalty Points"
+      }
+    ]
   }
-
-  customElements.define('cart-note', CartNote);
-{% endjavascript %}
-
-
-
-
-
+{% endschema %}
 
