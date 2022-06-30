@@ -265,7 +265,7 @@ export const AddGiveAway = ({ setToggle }) => {
         </Layout.AnnotatedSection>
 
         <Layout.AnnotatedSection
-          title="Date Information "
+          title="Date Information"
           description="This address will appear on your invoices."
         >
           <FormLayout>
@@ -394,8 +394,6 @@ export const AddGiveAway = ({ setToggle }) => {
 
               <br />
 
-              {/* eslint-disable */}
-
               {showChild &&
                 formValues.map((element, index) => (
                   <div className="form-inline" key={index}>
@@ -521,8 +519,6 @@ export const AddGiveAway = ({ setToggle }) => {
                     <br />
                   </div>
                 ))}
-
-              {/* eslint-enable */}
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
