@@ -396,12 +396,16 @@ export const AddGiveAway = ({ setToggle }) => {
 
               <br />
 
+              {/* eslint-disable   */}
+
               {showChild && formValues && (
                 <ChildFlashSale
                   formValues={formValues}
                   changeHandler={handleChangeFields}
                 />
               )}
+
+              {/* eslint-enable */}
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
