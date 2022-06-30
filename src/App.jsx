@@ -16,15 +16,11 @@ import "@shopify/polaris/build/esm/styles.css";
 import { Children, useState } from "react";
 // import ClientRouter from "./components/ClientRouter";
 // import { BrowserRouter } from "react-router-dom";
-import Link from "./Link";
-import Routes from "./Routes";
+
 import { AddGiveAway } from "./components/AddGiveAway";
 import { GiveAwayList } from "./components/GiveAwayList";
 
 export default function App(props) {
-  const [selection, setSelection] = useState([]);
-  const { Component, pageProps, history } = props;
-
   const [toggleComponenent, setToggleComponenent] = useState(false);
 
   const setToggle = () => {
