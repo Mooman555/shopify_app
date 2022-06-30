@@ -297,48 +297,7 @@ export const AddGiveAway = ({ setToggle }) => {
                   </div>
                 </Stack>
               </Stack>
-              <div className="time-wrapper">
-                <Stack vertical={true}>
-                  <TextStyle variation="strong">Select Start Time</TextStyle>
-                  {/* <div className="timerpicker"> */}
-                  {/* <TimePicker onChange={onChange} value={value} /> */}
-                  <input
-                    type="time"
-                    name="startTime"
-                    value={startTime}
-                    onChange={(e) => setStartTime(e.target.value)}
-                    id="startTime"
-                  />
-                  {/* </div> */}
-                  {/* {!validations.valid_from_time && (
-                    <InlineError
-                      message="This field name is required"
-                      fieldID="startTime"
-                    />
-                  )} */}
-                </Stack>
 
-                <Stack vertical={true}>
-                  <TextStyle variation="strong">Select End Time</TextStyle>
-                  <div>
-                    <input
-                      type="time"
-                      name="endTime"
-                      value={endTime}
-                      onChange={(e) => setEndTime(e.target.value)}
-                      id="endTime"
-                    />
-                  </div>
-
-                  {/* </div> */}
-                  {/* {!validations.valid_from_time && (
-                    <InlineError
-                      message="This field name is required"
-                      fieldID="startTime"
-                    />
-                  )} */}
-                </Stack>
-              </div>
               <br />
               <br />
               {/* <Stack>

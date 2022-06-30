@@ -31,7 +31,7 @@ const ChildFlashSale = ({ formValues, changeHandler }) => {
   };
 
   return (
-    <FormLayout>
+    <>
       {formValues.map((element, index) => (
         <div className="form-inline" key={index}>
           <FormLayout>
@@ -150,7 +150,7 @@ const ChildFlashSale = ({ formValues, changeHandler }) => {
           <br />
         </div>
       ))}
-    </FormLayout>
+    </>
   );
 };
 
