@@ -14,32 +14,46 @@ import { AppProvider as PolarisProvider } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
 import "@shopify/polaris/build/esm/styles.css";
 import { Children, useState } from "react";
-import ClientRouter from "./components/ClientRouter";
-import { BrowserRouter } from "react-router-dom";
+// import ClientRouter from "./components/ClientRouter";
+// import { BrowserRouter } from "react-router-dom";
 import Link from "./Link";
 import Routes from "./Routes";
+import { AddGiveAway } from "./components/AddGiveAway";
+import { GiveAwayList } from "./components/GiveAwayList";
 
 export default function App(props) {
   const [selection, setSelection] = useState([]);
   const { Component, pageProps, history } = props;
 
+  const [toggleComponenent, setToggleComponenent] = useState(false);
+
+  const setToggle = () => {
+    setToggleComponenent((prev) => (prev = !prev));
+  };
+
   return (
-    <BrowserRouter>
-      <PolarisProvider i18n={translations}>
-        <AppBridgeProvider
-          config={{
-            apiKey: process.env.SHOPIFY_API_KEY,
-            host: new URL(location).searchParams.get("host"),
-            forceRedirect: true,
-          }}
-        >
-          <MyProvider linkComponent={Link}>
-            {/* <ClientRouter/> */}
-            <Routes />
-          </MyProvider>
-        </AppBridgeProvider>
-      </PolarisProvider>
-    </BrowserRouter>
+    // <BrowserRouter>
+    <PolarisProvider i18n={translations}>
+      <AppBridgeProvider
+        config={{
+          apiKey: process.env.SHOPIFY_API_KEY,
+          host: new URL(location).searchParams.get("host"),
+          forceRedirect: true,
+        }}
+      >
+        <MyProvider>
+          {/* <p>Hello</p> */}
+          {/* <HomePage /> */}
+          {/* <Routes /> */}
+          {toggleComponenent === false ? (
+            <AddGiveAway setToggle={setToggle} />
+          ) : (
+            <GiveAwayList setToggle={setToggle} />
+          )}
+        </MyProvider>
+      </AppBridgeProvider>
+    </PolarisProvider>
+    // {/* </BrowserRouter> */}
   );
 }
 
