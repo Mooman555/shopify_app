@@ -22,6 +22,7 @@ import moment from "moment";
 import "./style.css";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
+import ChildFlashSale from "./ChildFlashSale";
 
 export const AddGiveAway = ({ setToggle }) => {
   const app = useAppBridge();
@@ -145,9 +146,10 @@ export const AddGiveAway = ({ setToggle }) => {
     setSelectedDates(dates);
   };
 
-  let handleChangeFields = (i, e) => {
+  let handleChangeFields = (index, name) => {
+    console.log(name, "name");
     let newFormValues = [...formValues];
-    newFormValues[i][e.target.name] = e.target.value;
+    newFormValues[index][name.name] = name.value;
     setFormValues(newFormValues);
   };
 
@@ -394,131 +396,16 @@ export const AddGiveAway = ({ setToggle }) => {
 
               <br />
 
-              {showChild &&
-                formValues.map((element, index) => (
-                  <>
-                    <FormLayout>
-                      <Card sectioned>
-                        <TextStyle variation="strong">Long name</TextStyle>
-                        <TextField
-                          //  error={validations.name === false && "This field required"}
-                          value={element.childLongName}
-                          name="childLongName"
-                          //  onChange={(value) => {
-                          //    setLongName(value);
-                          //   //  setValidations({ ...validations, name: true });
-                          //  }}
-                          onChange={(e) => handleChangeFields(index, e)}
-                          placeholder="DCG #55 - Widebody Supra + $40,000"
-                          autoComplete="off"
-                        />
+              {/* eslint-disable   */}
 
-                        <br />
-                        <TextStyle variation="strong">Short Name</TextStyle>
-                        <TextField
-                          //  error={validations.code === false && "This field required"}
-                          name="childShortName"
-                          value={element.childShortName}
-                          onChange={(e) => handleChangeFields(index, e)}
-                          //  id="shortName"
-                          type="text"
-                          placeholder="DCGCG"
-                          //  onChange={(value) => {
-                          //    setShortName(value);
-                          //   //  setValidations({ ...validations, code: true });
-                          //  }}
-                          autoComplete="off"
-                        />
-                      </Card>
-                    </FormLayout>
+              {showChild && formValues && (
+                <ChildFlashSale
+                  formValues={formValues}
+                  changeHandler={handleChangeFields}
+                />
+              )}
 
-                    <FormLayout>
-                      <br />
-                      <Card sectioned>
-                        <Stack>
-                          <Stack vertical={true}>
-                            <TextStyle variation="strong">
-                              Select Date
-                            </TextStyle>
-                            {/* <div className="datepicker"> */}
-                            <DatePicker
-                              month={month}
-                              year={year}
-                              onChange={(e) => handleChangeFields(index, e)}
-                              // onChange={(data) => {
-                              //   setDates(data);
-                              // }}
-                              onMonthChange={handleMonthChange}
-                              selected={selectedDates}
-                              multiMonth
-                              allowRange
-                            />
-
-                            {/* {!validations.valid_from_date && (
-                      <InlineError
-                        message="This field name is required"
-                        fieldID="startDate"
-                      />
-                    )} */}
-                            {/* </div> */}
-                          </Stack>
-                        </Stack>
-                        <div className="time-wrapper">
-                          <Stack vertical={true}>
-                            <TextStyle variation="strong">
-                              Select Start Time
-                            </TextStyle>
-                            {/* <div className="timerpicker"> */}
-                            {/* <TimePicker onChange={onChange} value={value} /> */}
-                            <input
-                              type="time"
-                              name="childStartTime"
-                              value={element.childStartTime}
-                              // onChange={(e) => setStartTime(e.target.value)}
-                              onChange={(e) => handleChangeFields(index, e)}
-                              id="childStartTime"
-                            />
-                            {/* </div> */}
-                            {/* {!validations.valid_from_time && (
-                    <InlineError
-                      message="This field name is required"
-                      fieldID="startTime"
-                    />
-                    )} */}
-                          </Stack>
-
-                          <Stack vertical={true}>
-                            <TextStyle variation="strong">
-                              Select End Time
-                            </TextStyle>
-                            {/* <div> */}
-                            <input
-                              type="time"
-                              name="childEndTime"
-                              value={element.childEndTime}
-                              // onChange={(e) => setEndTime(e.target.value)}
-                              onChange={(e) => handleChangeFields(index, e)}
-                              id="childEndTime"
-                            />
-                            {/* </div> */}
-
-                            {/* </div> */}
-                            {/* {!validations.valid_from_time && (
-                    <InlineError
-                      message="This field name is required"
-                      fieldID="startTime"
-                    />
-                    )} */}
-                          </Stack>
-                        </div>
-                        <br />
-                        <br />
-                      </Card>
-                    </FormLayout>
-                    <br />
-                    <br />
-                  </>
-                ))}
+              {/* eslint-enable */}
             </Card>
           </FormLayout>
         </Layout.AnnotatedSection>
