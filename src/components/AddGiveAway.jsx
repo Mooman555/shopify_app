@@ -396,7 +396,7 @@ export const AddGiveAway = ({ setToggle }) => {
 
               {showChild &&
                 formValues.map((element, index) => (
-                  <div className="form-inline" key={index}>
+                  <>
                     <FormLayout>
                       <Card sectioned>
                         <TextStyle variation="strong">Long name</TextStyle>
@@ -440,27 +440,27 @@ export const AddGiveAway = ({ setToggle }) => {
                             <TextStyle variation="strong">
                               Select Date
                             </TextStyle>
-                            <div className="datepicker">
-                              <DatePicker
-                                month={month}
-                                year={year}
-                                onChange={(e) => handleChangeFields(index, e)}
-                                // onChange={(data) => {
-                                //   setDates(data);
-                                // }}
-                                onMonthChange={handleMonthChange}
-                                selected={selectedDates}
-                                multiMonth
-                                allowRange
-                              />
+                            {/* <div className="datepicker"> */}
+                            <DatePicker
+                              month={month}
+                              year={year}
+                              onChange={(e) => handleChangeFields(index, e)}
+                              // onChange={(data) => {
+                              //   setDates(data);
+                              // }}
+                              onMonthChange={handleMonthChange}
+                              selected={selectedDates}
+                              multiMonth
+                              allowRange
+                            />
 
-                              {/* {!validations.valid_from_date && (
+                            {/* {!validations.valid_from_date && (
                       <InlineError
                         message="This field name is required"
                         fieldID="startDate"
                       />
                     )} */}
-                            </div>
+                            {/* </div> */}
                           </Stack>
                         </Stack>
                         <div className="time-wrapper">
@@ -484,23 +484,23 @@ export const AddGiveAway = ({ setToggle }) => {
                       message="This field name is required"
                       fieldID="startTime"
                     />
-                  )} */}
+                    )} */}
                           </Stack>
 
                           <Stack vertical={true}>
                             <TextStyle variation="strong">
                               Select End Time
                             </TextStyle>
-                            <div>
-                              <input
-                                type="time"
-                                name="childEndTime"
-                                value={element.childEndTime}
-                                // onChange={(e) => setEndTime(e.target.value)}
-                                onChange={(e) => handleChangeFields(index, e)}
-                                id="childEndTime"
-                              />
-                            </div>
+                            {/* <div> */}
+                            <input
+                              type="time"
+                              name="childEndTime"
+                              value={element.childEndTime}
+                              // onChange={(e) => setEndTime(e.target.value)}
+                              onChange={(e) => handleChangeFields(index, e)}
+                              id="childEndTime"
+                            />
+                            {/* </div> */}
 
                             {/* </div> */}
                             {/* {!validations.valid_from_time && (
@@ -508,7 +508,7 @@ export const AddGiveAway = ({ setToggle }) => {
                       message="This field name is required"
                       fieldID="startTime"
                     />
-                  )} */}
+                    )} */}
                           </Stack>
                         </div>
                         <br />
@@ -517,7 +517,7 @@ export const AddGiveAway = ({ setToggle }) => {
                     </FormLayout>
                     <br />
                     <br />
-                  </div>
+                  </>
                 ))}
             </Card>
           </FormLayout>
